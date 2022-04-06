@@ -137,7 +137,7 @@ function playerMove(i, j) {
 }
 
 function aiMove() {
-    let move = minimax(0, -Infinity, Infinity, false);
+    let move = minimax(0, -Infinity, Infinity, true);
     board[move.i][move.j] = AI;
     if (render()) return;
     current = HUMAN;
