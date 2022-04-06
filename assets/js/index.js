@@ -11,6 +11,24 @@ const HUMAN = 'o';
 let current = HUMAN;
 let firstMove = HUMAN;
 
+const modal = document.querySelector('.modal');
+const modalContent = document.querySelector('.modal-content');
+
+// Modal Functions
+function openModal(result) {
+    modal.style.display = 'block';
+    if (result === 'win') {
+        modalContent.innerText = 'You Win!';
+        modalContent.style.backgroundColor = '#198754';
+    } else if (result === 'loss') {
+        modalContent.innerText = 'You Lose!';
+        modalContent.style.backgroundColor = '#dc3545';
+    } else {
+        modalContent.innerText = 'Draw!';
+        modalContent.style.backgroundColor = '#fd7e14';
+    }
+}
+
 // Game Functions
 function render() {
     for (let i = 0; i < board.length; i++) {
@@ -19,15 +37,15 @@ function render() {
         }
     }
     if (checkWinner(AI)) {
-        console.log('AI wins!');
+        openModal('loss');
         setTimeout(resetBoard, 1000);
         return true;
     } else if (checkWinner(HUMAN)) {
-        console.log('Human wins!');
+        openModal('win');
         setTimeout(resetBoard, 1000);
         return true;
     } else if (board.every((row) => row.every((cell) => cell !== ''))) {
-        console.log('Draw!');
+        openModal('draw');
         setTimeout(resetBoard, 1000);
         return true;
     }
@@ -148,3 +166,10 @@ function handleClick(event) {
 for (let i = 0; i < tiles.length; i++) {
     tiles[i].addEventListener('click', handleClick);
 }
+
+// Modal Event
+window.onclick = (event) => {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+};
