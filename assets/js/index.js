@@ -18,10 +18,6 @@ function render() {
             tiles[i * 3 + j].innerText = board[i][j];
         }
     }
-    if (firstMove === AI) {
-        firstMove = HUMAN;
-        aiMove();
-    }
     if (checkWinner(AI)) {
         console.log('AI wins!');
         setTimeout(resetBoard, 1000);
@@ -124,7 +120,6 @@ function playerMove(i, j) {
 
 function aiMove() {
     let move = minimax(0, -Infinity, Infinity, false);
-    console.log(move);
     board[move.i][move.j] = AI;
     if (render()) return;
     current = HUMAN;
@@ -132,6 +127,11 @@ function aiMove() {
 
 function resetBoard() {
     board.forEach((row) => row.fill(''));
+    if (firstMove === AI) {
+        aiMove();
+    } else {
+        current = HUMAN;
+    }
     firstMove = firstMove === AI ? HUMAN : AI;
     render();
 }
