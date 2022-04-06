@@ -1,0 +1,101 @@
+/* General Styles */
+body {
+    background-color: #1a1a1a;
+    color: #fff;
+    font-family: monospace, monospace;
+    font-size: 14px;
+    line-height: 1.42857143;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    text-align: left;
+    text-decoration: none;
+    text-transform: none;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    white-space: normal;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.title {
+    text-align: center;
+}
+
+/* Game Board Styles */
+.board {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.board > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    border: 3px solid #f3f3f3;
+}
+
+.board > *:hover {
+    background: #2f2f2f;
+    cursor: pointer;
+}
+
+.board-top {
+    border-top: none;
+}
+
+.board-left {
+    border-left: none;
+}
+
+.board-right {
+    border-right: none;
+}
+
+.board-bottom {
+    border-bottom: none;
+}
+
+/* Responsive Sizing */
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: 36px;
+    }
+
+    .board {
+        width: 225px;
+        height: 225px;
+    }
+
+    .board > * {
+        width: 75px;
+        height: 75px;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .title {
+        font-size: 48px;
+    }
+
+    .board {
+        width: 300px;
+        height: 300px;
+    }
+
+    .board > * {
+        width: 100px;
+        height: 100px;
+    }
+}
