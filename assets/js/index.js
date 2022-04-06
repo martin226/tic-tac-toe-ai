@@ -5,11 +5,11 @@ const board = [
     ['', '', ''],
 ];
 const tiles = [...document.querySelector('.board').children];
-const AI = 'o';
-const HUMAN = 'x';
+let AI = 'o';
+let HUMAN = 'x';
 
 let current = HUMAN;
-let firstMove = HUMAN;
+let firstMove = 'HUMAN';
 
 const modal = document.querySelector('.modal');
 const modalContent = document.querySelector('.modal-content');
@@ -145,12 +145,16 @@ function aiMove() {
 
 function resetBoard() {
     board.forEach((row) => row.fill(''));
-    if (firstMove === AI) {
+    firstMove = firstMove === 'AI' ? 'HUMAN' : 'AI';
+    if (firstMove === 'AI') {
+        AI = 'x';
+        HUMAN = 'o';
         aiMove();
     } else {
+        AI = 'o';
+        HUMAN = 'x';
         current = HUMAN;
     }
-    firstMove = firstMove === AI ? HUMAN : AI;
     render();
 }
 
