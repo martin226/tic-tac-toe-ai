@@ -5,8 +5,8 @@ const board = [
     ['', '', ''],
 ];
 const tiles = [...document.querySelector('.board').children];
-const AI = 'x';
-const HUMAN = 'o';
+const AI = 'o';
+const HUMAN = 'x';
 
 let current = HUMAN;
 let firstMove = HUMAN;
