@@ -8,7 +8,6 @@ const tiles = [...document.querySelector('.board').children];
 let AI = 'o';
 let HUMAN = 'x';
 
-let current = HUMAN;
 let firstMove = 'HUMAN';
 
 const modal = document.querySelector('.modal');
@@ -129,9 +128,8 @@ function minimax(depth, alpha, beta, maximizingPlayer) {
 
 function playerMove(i, j) {
     if (empty(i, j)) {
-        board[i][j] = current;
+        board[i][j] = HUMAN;
         if (render()) return;
-        current = AI;
         aiMove();
     }
 }
@@ -140,7 +138,6 @@ function aiMove() {
     let move = minimax(0, -Infinity, Infinity, true);
     board[move.i][move.j] = AI;
     if (render()) return;
-    current = HUMAN;
 }
 
 function resetBoard() {
@@ -153,7 +150,6 @@ function resetBoard() {
     } else {
         AI = 'o';
         HUMAN = 'x';
-        current = HUMAN;
     }
     render();
 }
