@@ -98,11 +98,12 @@ function minimax(depth, alpha, beta, maximizingPlayer) {
         for (let j = 0; j < board[i].length; j++) {
             if (empty(i, j)) {
                 board[i][j] = maximizingPlayer ? AI : HUMAN;
+                depth++;
                 let move = {
                     i: i,
                     j: j,
                     score:
-                        minimax(depth + 1, alpha, beta, !maximizingPlayer).score +
+                        minimax(depth, alpha, beta, !maximizingPlayer).score +
                         (maximizingPlayer === true ? -depth : depth), // Subtract depth if player is AI, add depth if player is HUMAN
                 };
                 board[i][j] = '';
