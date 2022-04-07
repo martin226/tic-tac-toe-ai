@@ -37,15 +37,12 @@ function render() {
     }
     if (checkWinner(AI)) {
         openModal('loss');
-        setTimeout(resetBoard, 1000);
         return true;
     } else if (checkWinner(HUMAN)) {
         openModal('win');
-        setTimeout(resetBoard, 1000);
         return true;
     } else if (board.every((row) => row.every((cell) => cell !== ''))) {
         openModal('draw');
-        setTimeout(resetBoard, 1000);
         return true;
     }
     return false;
@@ -171,6 +168,7 @@ for (let i = 0; i < tiles.length; i++) {
 // Modal Event
 window.onclick = (event) => {
     if (event.target === modal) {
+        resetBoard();
         modal.style.display = 'none';
     }
 };
